@@ -26,6 +26,10 @@ There are two options :
   python predict.py -v True
 ```
 
+Sample Image with predicted key points.
+
+<img src='test_detected.jpg'>
+
 ## Improvements
 
 The improvements that can be done to this project is implementing a better and more optimized face detection model and using optical flow algorithm or any other algorithm for tracking facial keypoints over time i.e. in a video.
