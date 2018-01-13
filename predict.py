@@ -31,11 +31,10 @@ def predict(img='images/test.jpg',v=False, image=None, filters=None):
 				for point in zip(xs,ys):
 					cv2.circle(image, point, 4, (0,255,0), -1)
 			if filters["glasses"]:
-				sunglasses = cv2.imread("images/sunglasses_4.png", cv2.IMREAD_UNCHANGED)
+				sunglasses = cv2.imread("images/sunglasses.png", cv2.IMREAD_UNCHANGED)
 				sunglass_width = int((xs[7]-xs[9])*1.1)
 				sunglass_height = int((ys[10]-ys[8])/1.1)
-				print(sunglass_height, sunglass_width)
-				sunglass_resized = cv2.resize(sunglasses, (sunglass_height, sunglass_width))
+				sunglass_resized = cv2.resize(sunglasses, (sunglass_width, sunglass_height))
 				transparent_region = sunglass_resized[:,:,:3] != 0
 				image[int(ys[9]):int(ys[9])+sunglass_height,int(xs[9]):int(xs[9])+sunglass_width,:][transparent_region] = sunglass_resized[:,:,:3][transparent_region]
 		if save:
@@ -45,7 +44,7 @@ def predict(img='images/test.jpg',v=False, image=None, filters=None):
 		else:
 			return image
 	else:
-		sunglasses = cv2.imread("images/sunglasses_4.png", cv2.IMREAD_UNCHANGED)
+		sunglasses = cv2.imread("images/sunglasses.png", cv2.IMREAD_UNCHANGED)
 		# Create instance of video capturer
 		cv2.namedWindow("face detection activated")
 		vc = cv2.VideoCapture(0)
