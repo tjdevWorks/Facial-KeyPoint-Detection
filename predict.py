@@ -110,8 +110,10 @@ def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-i', metavar='input-file', help='Pass the input image/video file location', action='store', type=argparse.FileType('r'), default='images/test.jpg')
 	parser.add_argument('-v', type=bool, default=False, help='Set to True for webcam input default is False')
+	parser.add_argument('--glasses', type=int, default=0, help='Set to True for placing sunglass filter')
+	parser.add_argument('--keypoints', type=int, default=1, help="Set to False if you don't want key_points on image/video")
 	results=parser.parse_args()
-	predict(img=results.i.name, v=results.v, filters={"key_points": 1, "glasses": 1})
+	predict(img=results.i.name, v=results.v, filters={"key_points": results.keypoints, "glasses": results.glasses})
 
 if __name__ == '__main__':
 	main()
